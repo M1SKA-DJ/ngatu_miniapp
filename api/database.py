@@ -1,6 +1,8 @@
 # database.py
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+from api.models import Something
+
 import os
 
 # TODO: при переносе на сервер можно поменять DATABASE_URL на PostgreSQL
