@@ -1,19 +1,11 @@
-# routers/groups.py
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from database import SessionLocal
+from fastapi import APIRouter
+from database import get_db
 from models import Group
-from schemas import GroupSchema
 
-router = APIRouter(prefix="/api/groups", tags=["Groups"])
+router = APIRouter(prefix="/groups", tags=["groups"])
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-@router.get("/", response_model=list[GroupSchema])
-async def get_groups(db: Session = Depends(get_db)):
-    return db.query(Group).all()
+@router.get("/")
+def get_groups():
+    db = get_db()
+    groups = db.query(Group).all()
+    return groups
