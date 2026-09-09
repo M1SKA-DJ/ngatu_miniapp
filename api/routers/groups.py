@@ -1,6 +1,7 @@
 from fastapi import APIRouter
-from database import get_db
-from models import Group
+from api.models import Group
+from api.database import get_db
+
 
 router = APIRouter(prefix="/groups", tags=["groups"])
 
