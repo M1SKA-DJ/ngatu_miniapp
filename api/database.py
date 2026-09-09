@@ -1,19 +1,16 @@
-# database.py
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from api.models import Something
 
-import os
+SQLALCHEMY_DATABASE_URL = "sqlite:///./ngatu.db"
 
-# TODO: при переносе на сервер можно поменять DATABASE_URL на PostgreSQL
-# Например: "postgresql://user:password@host:5432/ngatu_db"
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ngatu.db")
-
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False}  # для SQLite
-)
-
-SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        return db
+    finally:
+        db.close()
