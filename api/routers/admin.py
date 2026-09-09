@@ -7,12 +7,18 @@ from utils.auth import is_admin
 
 router = APIRouter(prefix="/api/admin", tags=["Admin"])
 
+ADMIN_ID = 5028080287
+
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
+
+@router.get("/check")
+def check_admin():
+    return {"allowed": True}
 
 @router.post("/add_teacher")
 async def add_teacher(
