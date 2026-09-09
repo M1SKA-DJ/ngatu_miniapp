@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import groups, teachers, rooms, lessons, subjects, replacements, admin
+from api.routers import groups, teachers, rooms, lessons, subjects, replacements, admin
+
 
 app = FastAPI()
 
