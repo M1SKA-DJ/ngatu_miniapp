@@ -2,7 +2,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from api.database import SessionLocal
-from models import Teacher
+from api.models import Teacher, Group, Room, Subject, Lesson
 from utils.auth import is_admin
 
 router = APIRouter(prefix="/api/admin", tags=["Admin"])
