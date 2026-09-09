@@ -1,7 +1,7 @@
 # routers/admin.py
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import SessionLocal
+from api.database import SessionLocal
 from models import Teacher
 from utils.auth import is_admin
 
