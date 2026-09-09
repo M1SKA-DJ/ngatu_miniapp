@@ -1,7 +1,8 @@
 # models.py
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Time
 from sqlalchemy.orm import relationship
-from database import Base
+from api.database import Base
+
 
 class Department(Base):
     __tablename__ = "departments"
